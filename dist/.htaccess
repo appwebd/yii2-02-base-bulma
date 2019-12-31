@@ -1,0 +1,21 @@
+RewriteEngine on
+# If a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Otherwise forward it to index.php
+RewriteRule . index.php
+
+<IfModule mod_headers.c>
+Header unset Server
+Header always unset X-Powered-By
+Header unset X-Powered-By
+Header unset X-CF-Powered-By
+Header unset X-Mod-Pagespeed
+Header unset X-Pingback
+ 
+Header set Strict-Transport-Security "max-age=10886400; includeSubDomains; preload" env=HTTPS
+Header set X-Frame-Options "ALLOW-FROM https://www.googletagmanager.com/"
+Header always set X-Xss-Protection "1; mode=block"
+Header always set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy: strict-origin-when-cross-origin
+</IfModule>
