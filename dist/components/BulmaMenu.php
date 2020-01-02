@@ -101,6 +101,7 @@ class BulmaMenu extends Component
      */
     public function navBarItem($caption, $action, $class = ' ')
     {
+        $caption = Yii::t('app', $caption);
         return Html::a(
             $caption,
             Url::to([$action]),

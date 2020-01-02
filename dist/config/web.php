@@ -85,7 +85,7 @@ $config = [
                         'app' => 'app.php',
                         'app/error' => 'error.php',
                     ],
-                    'on missingTranslation' => ['app\components\TranslationEventHandler', 'handleMissingTranslation']
+                    'on missingTranslation' => ['app\components\TranslationEvent', 'missingTrans']
                 ],
             ],
         ],
@@ -146,10 +146,12 @@ $config = [
             'cookieValidationKey' => 'BCF5F4707D8FE67F7FDB8CB153D05E12907F6F82',
             'enableCsrfValidation' => true,
             'enableCookieValidation' => true,
+/*
             'csrfCookie' => [
                 'httpOnly' => true,
                 'secure' => true
             ]
+*/
         ],
         'session' => [
             'class' => 'yii\web\DbSession',
@@ -165,12 +167,13 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['/login/index'],
-
+/*
             'identityCookie' => [
                 'name' => '_identity',
                 'httpOnly' => true,
                 'secure' => true,
             ],
+*/
 
         ],
 /*

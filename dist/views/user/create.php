@@ -28,14 +28,17 @@ $this->params[BREADCRUMBS][] = Yii::t('app', $titleView);
 echo HTML_WEBPAGE_OPEN;
 
 $uiComponent = new UiComponent();
-$uiComponent->header(
+$uiComponent->cardHeader(
     'user',
+    'white',
     $this->title,
     Yii::t(
         'app',
         'Please complete all requested information.'
-    )
+    ),
+    false
 );
 
 echo $this->renderFile('@app/views/user/_form.php', ['model'=>$model]);
+
 echo HTML_WEBPAGE_CLOSE;

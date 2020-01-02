@@ -24,6 +24,8 @@ use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 /**
  * Class ProfileController
@@ -77,7 +79,47 @@ class ProfileController extends BaseController
      */
     public function behaviors()
     {
-        return $this->behaviorsCommon();
+        return [
+            'access' => [
+                STR_CLASS => AccessControl::class,
+                'only' => [
+                    ACTION_CREATE,
+                    ACTION_DELETE,
+                    ACTION_INDEX,
+                    self::ACTION_TOGGLE_ACTIVE,
+                    ACTION_REMOVE,
+                    ACTION_UPDATE,
+                    ACTION_VIEW
+                ],
+                'rules' => [
+                    [
+                        ACTIONS => [
+                            ACTION_CREATE,
+                            ACTION_DELETE,
+                            ACTION_INDEX,
+                            self::ACTION_TOGGLE_ACTIVE,
+                            ACTION_REMOVE,
+                            ACTION_UPDATE,
+                            ACTION_VIEW
+                        ],
+                        ALLOW => true,
+                        ROLES => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                STR_CLASS => VerbFilter::class,
+                ACTIONS => [
+                    ACTION_CREATE => ['get',  'post'],
+                    ACTION_DELETE => ['post'],
+                    ACTION_INDEX => ['get', 'post'],
+                    self::ACTION_TOGGLE_ACTIVE => ['post'],
+                    ACTION_REMOVE => ['post'],
+                    ACTION_UPDATE => ['get',  'post'],
+                    ACTION_VIEW => ['get'],
+                ],
+            ],
+        ];
     }
 
     /**

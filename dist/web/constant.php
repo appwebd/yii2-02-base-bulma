@@ -102,6 +102,9 @@ defined('HTML_WEBPAGE_OPEN_COL_SM_4S') || define('HTML_WEBPAGE_OPEN_COL_SM_4S', 
 defined('HTML_WEBPAGE_OPEN_COL_SM_8S') || define('HTML_WEBPAGE_OPEN_COL_SM_8S', '<div class="columns stickyWrapper"><div class="column is-8">');
 defined('HTML_WEBPAGE_OPEN_COL_SM_9S') || define('HTML_WEBPAGE_OPEN_COL_SM_9S', '<div class="columns stickyWrapper"><div class="column is-9">');
 
+defined('HTML_ROW_DIV6') || define('HTML_ROW_DIV6', '<div class="columns"><div class="column is-6">');
+defined('HTML_DIV_CLOSE_DIV6_OPEN') || define('HTML_DIV_CLOSE_DIV6_OPEN', '</div><div class="column is-6">');
+
 
 defined('HTML_WEBPAGE_OPEN') || define('HTML_WEBPAGE_OPEN', '<div class="webpage">');
 defined('ID') || define('ID', 'id');

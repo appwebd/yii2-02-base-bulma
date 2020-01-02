@@ -166,7 +166,7 @@ HTML;
      *
      * @return string
      */
-    public function pageSizeDropDownList($pageSize)
+    public static function pageSizeDropDownList($pageSize)
     {
         return '<div class="select " >'.
             Html::dropDownList(

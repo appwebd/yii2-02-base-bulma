@@ -34,12 +34,14 @@ echo HTML_WEBPAGE_OPEN;
 
 echo Html::beginForm(['user/index'], 'post');
 
+$uiButtons = new UiButtons();
+$common = new Common();
 $uiComponent = new UiComponent();
-$uiComponent->headerAdmin(
+$uiComponent->cardHeader(
     'user',
+    ' white',
     $this->title,
     Yii::t('app', 'This view permit Create a new User, update or delete information related of user'),
-    'user',
     '111',
     false
 );
@@ -68,7 +70,8 @@ try {
                     FILTER => ProfileSearch::getProfileListSearch('user'),
                     VALUE => function ($model) {
                         $profile_name = Profile::getProfileName($model->profile_id);
-                        return UiComponent::badgetStatus(
+                        $uiComponent = new UiComponent();
+                        return $uiComponent->badgetStatus(
                             $model->profile_id, $profile_name
                         );
                     },
@@ -76,28 +79,29 @@ try {
                 ],
                 [
                     STR_CLASS => GRID_DATACOLUMN,
-                    FILTER => UiComponent::yesOrNoArray(),
+                    FILTER => $uiComponent->yesOrNoArray(),
                     ATTRIBUTE => User::ACTIVE,
                     OPTIONS => [STR_CLASS => COLSM1],
                     VALUE => function ($model) {
-                        return UiComponent::yesOrNo($model->active);
+                        $uiComponent = new UiComponent();
+                        return $uiComponent->yesOrNo($model->active);
                     },
                     FORMAT => 'raw'
                 ],
                 [
-                    'buttons' => UiButtons::buttonsActionColumn(),
+                    'buttons' => $uiButtons->buttonsActionColumn(),
                     'contentOptions' => [STR_CLASS => 'GridView'],
                     HEADER => UiComponent::pageSizeDropDownList($pageSize),
                     'headerOptions' => ['style' => 'color:#337ab7'],
-                    'class'=> yii\grid\ActionColumn::className(),
-                    TEMPLATE => Common::getProfilePermissionString(),
+                    'class'=> \yii\grid\ActionColumn::className(),
+                    TEMPLATE => Common::getProfilePermissionString('111'),
                 ]
             ]
         ]
     );
 } catch (Exception $exception) {
     $bitacora = new Bitacora();
-    $bitacora->register(
+    $bitacora->registerAndFlash(
         $exception,
         'app\views\User\index::GridView',
         MSG_ERROR
@@ -117,5 +121,6 @@ try {
 }
 
 Html::endForm();
+echo HTML_WEBPAGE_CLOSE;
 echo HTML_WEBPAGE_CLOSE;
 

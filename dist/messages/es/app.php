@@ -9,7 +9,7 @@
  * Each array element represents the translation (value) of a message (key).
  * If the value is empty, the message is considered as not translated.
  * Messages that no longer need translation will have their translations
- * enclosed between a pair of '@@' marks.
+ * enclosed between a pair of '' marks.
  *
  * Message string can be used with plural forms format. Check i18n section
  * of the guide for details.
@@ -22,8 +22,8 @@ return [
     ' User account' => 'Cuenta de usuario',
     ' ms. using' => 'ms. usando',
     ' valid email account, Ex: account@domain.com' => 'Cuenta de correo válida, ejemplo: account@domain.com',
-    'A link to reset the password will be sent to your email account.' =>
-        'Será enviado a su cuenta de correo, un enlace para recuperar su contraseña',
+    '&nbsp; Assign access ?' => 'Asignar acceso',
+    'A link to reset the password will be sent to your email account.' => 'Será enviado a su cuenta de correo, un enlace para recuperar su contraseña',
     'ABOUT' => 'ACERCA DE',
     'About' => 'Acerca de',
     'About of this webpage' => 'Acerca de esta página',
@@ -42,43 +42,58 @@ return [
     'COOKIES POLICY' => 'POLITICA DE COOKIES',
     'Company' => 'Compañía',
     'Company Name' => 'Nombre de compañía',
+    'Config' => 'Configuración',
     'Contact' => 'Contacto',
     'Contact email' => 'Correo contacto',
     'Contact person' => 'Contacto persona',
     'Contact phone' => 'Contacto móvil',
     'Controller' => 'Controlador',
     'Controllers' => 'Controladores',
+    'Cookies policy' => 'Políticas de privacidad Cookies',
     'Could not save new Action:' => 'Podría no guardar nueva acción:',
+    'Could not save new User:
+' => 'Podría no haberse guardado la información de usuario',
+    'Could not save new log information: {error}' => 'No se pudo guardar nueva información de log: {error}',
     'Create' => 'Crear',
-    'Config' => 'Configuración',
     'Create a new record' => 'Crear un nuevo registro',
-    'Detailed information' => 'Información detallada',
-    'General administration view' => 'Vista general de administración',
     'Delete' => 'Eliminar',
+    '<i class="fas fa-trash"></i>&nbsp;Delete' => '<i class="fas fa-trash"></i>&nbsp;Eliminar',
+    'Delete record' => 'Eliminar registro',
     'Delete the selected records' => 'Eliminar el registro seleccionado',
     'Description' => 'Descripción',
-    'Error saving record' => 'Error al guardar registro',
+    'Detailed information' => 'Información detallada',
+    'Email' => 'Correo',
     'Email confirmation' => 'Confirmación de email',
     'Email confirmation failed' => 'Confirmación de email ha fallado',
-    'Email' => 'Correo',
-    'Email token of confirmation ' => 'Token de confirmación de correo',
-    'Enter the name that best identifies your user profile.' =>
-        'Ingrese el nombre que mejor identifica su perfil de usuario.',
+    'Email confirmation success' => 'Confirmación de email exitosa',
     'Email is required information!' => 'Email es unformación requerida',
+    'Email token of confirmation ' => 'Token de confirmación de correo',
+    'Enter the name that best identifies your user profile.' => 'Ingrese el nombre que mejor identifica su perfil de usuario.',
     'Error' => 'Error',
-    'Error: {error}' => 'Error: {error}',
     'Error creating action name: {action_name}' => 'Error al crear acción  {action_name}',
     'Error creating controlller name: {controller_name}' => 'Error al crear controlador {controller_name}',
-    'Failed to show information, error: {error}' => 'Error al mostrar información, error: {error}',
+    'Error saving record' => 'Error al guardar registro',
+    'Error saving record: {error}' => 'Error al guardar registro {error}',
+    'Error, token password reset wrong {$token}' => 'Error, Token para cambiar contraseña erroneo {token}',
+    'Error, token password reset wrong {token}' => 'Error, token para cambiar contraseña erroneo {token}',
+    'Error, updating password {error}' => 'Error, al actualizar contraseña {error}',
+    'Error, {module} {error}' => 'Error,  {module}  {error}',
+    'Error: {error}' => 'Error: {error}',
+    'Event log of the web application.' => 'Bitácora de eventos de la aplicación web',
     'Failed to create a new record' => 'Ha fallado el crear un nuevo registro',
     'Failed to send confirmation email to new user.' => 'Ha fallado el envío de correo a nuevo usuario',
+    'Failed to show information, error: {error}' => 'Error al mostrar información, error: {error}',
     'First name' => 'Nombres',
+    'First name is required information!' => 'Primer nombre es información requerida!',
+    'Function' => 'Función',
+    'General administration view' => 'Vista general de administración',
     'Home' => 'Inicio',
     'IPV4 address' => 'Dirección IPV4',
     'IPV4 address integer' => 'Dirección ipv4 (formato numérico)',
     'Ipv4 Blocked' => 'IPV4 bloqueada',
     'Last ipv4 address used' => 'ültima dirección IPV4 empleada',
     'Last name' => 'Apellidos',
+    'Last name is required!' => 'Apellido es requerido!',
     'Login' => 'Control de acceso',
     'Logs' => 'Logs',
     'Logs (user bitacora)' => 'Logs (bitácora de usuario)',
@@ -86,75 +101,71 @@ return [
     'Menu is visible' => 'Menu es visible',
     'Name' => 'Nombre',
     'New' => 'Nuevo',
+    'New password, Minimum password length are 8 chars and max. 50.' => 'Nueva contraseña, debe contener mín. entre 8 a 50 caracteres.',
     'No results found' => 'No se encontraron resultados',
     'Number of rows to display per page' => 'Número de filas a mostrar por página',
     'OK your Controller was saved.' => 'OK Controlador ha sido creado',
     'OK your action {actionName} was saved.' => 'OK acción {actioName} fue creada',
-    'PRIVACY POLICY' => 'POLITICA DE PRIVACIDAD',
-    'Password reset' => 'Cambio de contraseña',
-    'Please, write your new password' => 'Por favor, escriba su nueva contraseña',
-    'New password, Minimum password length are 8 chars and max. 50.' =>
-        'Nueva contraseña, debe contener mín. entre 8 a 50 caracteres.',
+
     'Page not valid Please do not repeat this requirement.
-                All site traffic is being monitored' =>
-        'Página no válida, por favor no repita esta acción. Todo el tráfico de este sitio está siendo monitoreado',
-    'Page not valid Please do not repeat this requirement. All site traffic is being monitored' =>
-        'Página no válida, no repita este requerimiento. Todo el tráfico esta siendo monitoreado',
+                    All site traffic is being monitored' => 'Página no válida, por favor no repita esta acción nuevamente. Todo el tráfico de este sitio está siendo monitoreado',
+    'Page not valid Please do not repeat this requirement.
+                All site traffic is being monitored' => 'Página no válida, por favor no repita esta acción. Todo el tráfico de este sitio está siendo monitoreado',
+    'Page not valid Please do not repeat this requirement. All site traffic is being monitored' => 'Página no válida, no repita este requerimiento. Todo el tráfico esta siendo monitoreado',
     'Password' => 'Contraseña',
+    'Password reset' => 'Cambio de contraseña',
     'Password was updated' => 'Contraseña fue actualizada',
-    'Error, token password reset wrong {$token}' => 'Error, Token para cambiar contraseña erroneo {token}',
     'Permission' => 'Permisos',
     'Phone additional' => 'Teléfono adicional',
     'Phone number' => 'Número de teléfono',
-    'Please complete all requested information of Permission.' =>
-        'Por favor, complete toda la información solicitada',
-    'Please complete all requested information of User.' =>
-        'Por favor, ingrese toda la información de usuario',
+    'Permissions assigned to the activity' => 'Permisos asignados a la actividad',
+    'Please complete all requested information of Permission.' => 'Por favor, complete toda la información solicitada',
+    'Please complete all requested information of User.' => 'Por favor, ingrese toda la información de usuario',
     'Please complete all requested information.' => 'Por favor, ingrese toda la información',
-    'Please complete the following fields to start your session:' =>
-        'Por favor ingrese toda la información para iniciar sesión',
+    'Please complete the following fields to start your session:' => 'Por favor ingrese toda la información para iniciar sesión',
     'Please select one option' => 'Por favor seleccione una opción',
     'Please, choose your new password' => 'Por favor, escriba una contraseña',
-    'Please, write your registered mail in this platform to reset your password' =>
-        'Por favor, escriba el correo registrado en esta plataforma para recuperar su contraseña',
+    'Please, write your new password' => 'Por favor, escriba su nueva contraseña',
+    'Please, write your registered mail in this platform to reset your password' => 'Por favor, escriba el correo registrado en esta plataforma para recuperar su contraseña',
+    'PRIVACY POLICY' => 'POLÍTICA DE PRIVACIDAD',
     'Profile' => 'Perfil',
     'Profiles' => 'Perfiles',
-    'Record could not be deleted because it is being used in the system' =>
-        'Registro no puede ser eliminado, pues esta siendo empleado en el sistema',
+    'Record could not be deleted because it is being used in the system' => 'Registro no puede ser eliminado, pues esta siendo empleado en el sistema',
+    'Record saved successfully' => 'Registro ha sido almacenado exitosamente',
     'Record {id} has been deleted' => 'Registro {id} ha sido eliminado',
-    'Record {id} was not possible to update the value active' =>
-        'Registro {id} no fue posible actualizar el valor activo',
+    'Record {id} was not possible to update the value active' => 'Registro {id} no fue posible actualizar el valor activo',
     'Records selected: \'{ids}\' has been deleted.' => 'Registro selccionado: \'{ids}\' ha sido eliminado',
+    'New / Refresh' => 'Nuevo / Refresh',
     'Refresh' => 'Refresh',
     'Refresh view' => 'Refresh la vista',
-    'Registers entered (It is updated when the form is loaded)' =>
-        'Registros ingresados (Se actualiza cuando se carga el formulario)',
+    'Registers entered (It is updated when the form is loaded)' => 'Registros ingresados (Se actualiza cuando se carga el formulario)',
     'Reload the active webpage' => 'Recargar esta página',
-    'record {id} was deleted' => 'Registro {id} fue eliminado',
     'Remember me' => 'Recuérdame',
     'Request password reset' => 'Petición para recuperar contraseña',
     'Requested password reset' => 'Restablecer contraseña solicitada',
     'Reset password' => 'Recuperar contraseña',
     'Return to:' => 'Regresar a ',
-    'show password' => 'Mostrar contraseña',
+    '<i class="fas fa-sync-alt"></i>&nbsp;Refresh' => '<i class="fas fa-sync-alt"></i>&nbsp;Refresh',
     'Save' => 'Guardar',
     'Save the information of this form' => 'Guardar información de este formulario',
     'Select Action' => 'Seleccione acción',
     'Select Company' => 'Seleccione compañía',
     'Select Controller' => 'Seleccione controlador',
     'Select Profile' => 'Seleccione perfil',
-    'Select the user profile to which you want to create / update the access properties' =>
-        'Seleccione el perfil de usuario al cual usted desea crear/actualizar las propiedades',
+    'Select the user profile to which you want to create / update the access properties' => 'Seleccione el perfil de usuario al cual usted desea crear/actualizar las propiedades',
     'Select the view / web page to then identify the action that is performed on it.
-        Setting access Yes / No will indicate if the profile has access to this resource' =>
-        'Selecciona la vista / página web para luego identificando la acción que se realiza sobre ella.
+        Setting access Yes / No will indicate if the profile has access to this resource' => 'Selecciona la vista / página web para luego identificando la acción que se realiza sobre ella.
      El establecer acceso Sí/No indicará si el perfil tiene acceso a este recurso',
-    '&nbsp; Assign access ?' => 'Asignar acceso',
-    'Selected records: \'{ids}\' have not been deleted (they are being used in the system)' =>
-        'El seleccionado registro: \'{ids}\' no ha sido eliminado (esta siendo ocupado en el sistema)',
+    'Select the view / web page to then identify the action that is performed on it.
+    Setting access Yes / No will indicate if the profile has access to this resource' => 'Seleccione la vista o página web para luego identificar la acción que se desea
+    aplicar sobre ésta. Estableza Sí / No para indicar si el perfil tendrá acceso a este recurso',
+    'Selected records: \'{ids}\' a problem occurred removing the record' => 'Al eliminar los registros seleccionados: {ids}, ocurrió un problema.',
+    'Selected records: \'{ids}\' have not been deleted (they are being used in the system)' => 'El seleccionado registro: \'{ids}\' no ha sido eliminado (esta siendo ocupado en el sistema)',
+    'Selected records: \'{ids}\' have not been deleted, they are being used in the system' => 'Los registros seleccionados {ids} no han sido eliminados pues están siendo ocupados en el sistema',
+    'Selected records: \'{ids}\' was not found in the database' => 'Los registros seleccionados no fueron encontrados en la base de datos',
+    'Sign up' => 'Registrarse',
     'Signed Up' => 'Registrado',
     'Signup' => 'Registrarse',
-    'Sign up' => 'Registrarse',
     'Signup email of confirmation' => 'Correo de confirmación al registrarse',
     'Signup view' => 'Vista registro',
     'Status' => 'Estado',
@@ -163,108 +174,99 @@ return [
     'Submit' => 'Enviar',
     'System' => 'Sistema',
     'TERM OF USE' => 'TERMINOS DE USO',
-    'There is no user with such email.' => 'Email no válido',
-    'The above error occurred while the Web server was processing your request.
-                    We are generating a record status of this error. Thank you.' =>
-        'El error anterior ocurrió mientras el servidor web estaba procesando su solicitud.
-Estamos generando un estado de registro de este error. Gracias.',
+    'Term of use' => 'Términos de uso',
     'Thank you for contacting us.
-                        We will respond as soon as possible.' =>
-        'Gracias por contactarnos, responderemos tan pronto sea posible',
+                        We will respond as soon as possible.' => 'Gracias por contactarnos, responderemos tan pronto sea posible',
     'Thanks for your registration' => 'Gracias por registrarse',
     'Thanks you' => 'Gracias',
-    'The file config/params.php is incomplete (the variable adminEmail is missing)' =>
-        'La declaración de variable adminEmail no ha sido declarada en archvio config/param.',
+    'The above error occurred while the Web server was processing your request.
+                    We are generating a record status of this error. Thank you.' => 'El error anterior ocurrió mientras el servidor web estaba procesando su solicitud.
+Estamos generando un estado de registro de este error. Gracias.',
+    'The above error occurred while the Web server was processing your request.
+            We are generating a record status of this error. Thank you.' => 'Ocurrió un error, mientras se procesaba la página web solicitada. Estamos generando un registros para resolver este error. Gracias',
+    'The above error occurred while the Web server was processing your request. 
+                    We are generating a record status of this error. Thank you.' => 'Ocurrió un error, mientras se procesaba la página web solicitada. Estamos generando un registros para resolver este error. Gracias',
+    'The file config/params.php is incomplete (the variable adminEmail is missing)' => 'La declaración de variable adminEmail no ha sido declarada en archvio config/param.',
     'The password is required information!' => 'Contraseña es información requerida',
+    'The password used at this platform was updated successfully' => 'La contraseña utilizada en esta plataforma, fue actualizada con éxito.',
     'The requested page does not exist {id}' => 'La página solicitada no existe {id}',
     'The requested page does not exist.' => 'La página solicitada no existe',
-    'The sending of emails to your email account has failed:use' =>
-        'Ha fallado el envío de un mensaje a su cuenta de correo',
-    'This view exists for to do more easy the stadistica process in the web application' =>
-        'Esta vista existe, para hacer más fácil el proceso de estadísticas en esta aplicación web',
-    'Event log of the web application.' =>
-        'Bitácora de eventos de la aplicación web',
-    'This view is the event log of the web application.' =>
-        'Esta vista, permite mostrar la bitácora de todos los eventos que suceden en la aplicación web',
-    'This view permit Create a new User, update or delete information related of user' =>
-        'Esta vista permite, crear, actualizar y visualizar información relacionada con usuarios',
-    'This view permit Create, update or delete information related of permission' =>
-        'Esta vista permite, crear, actualizar y visualizar información relacionada con Permisos',
-    'This view permit view detailed information of Company' =>
-        'Esta vista permite, crear, actualizar y visualizar información relacionada de empresas',
-    'This view permit view detailed information of Permission' =>
-        'Esta vista permite, crear, actualizar y visualizar información relacionada Permisos de usuarios',
-    'This view permit view detailed information of Profiles' =>
-        'Esta vista permite, crear, actualizar y visualizar información relacionada Perfiles de usuarios',
-    'This view permit view detailed information of User' =>
-        'Esta vista permite, crear, actualizar y visualizar información relacionada de usuarios',
-    'This view recollect all the controllers that exists in this web application' =>
-        'Esta vista registra todos los controladores de la aplicación',
+    'The sending of emails to your email account has failed:use' => 'Ha fallado el envío de un mensaje a su cuenta de correo',
+    'There is no user with such email.' => 'Email no válido',
+    'This view exists for to do more easy the stadistica process in the web application' => 'Esta vista existe, para hacer más fácil el proceso de estadísticas en esta aplicación web',
+    'This view is the event log of the web application.' => 'Esta vista, permite mostrar la bitácora de todos los eventos que suceden en la aplicación web',
+    'This view permit Create a new User, update or delete information related of user' => 'Esta vista permite, crear, actualizar y visualizar información relacionada con usuarios',
+    'This view permit Create, update or delete information related of permission' => 'Esta vista permite, crear, actualizar y visualizar información relacionada con Permisos',
+    'This view permit view detailed information of Company' => 'Esta vista permite, crear, actualizar y visualizar información relacionada de empresas',
+    'This view permit view detailed information of Permission' => 'Esta vista permite, crear, actualizar y visualizar información relacionada Permisos de usuarios',
+    'This view permit view detailed information of Profiles' => 'Esta vista permite, crear, actualizar y visualizar información relacionada Perfiles de usuarios',
+    'This view permit view detailed information of User' => 'Esta vista permite, crear, actualizar y visualizar información relacionada de usuarios',
+    'This view recollect all the controllers that exists in this web application' => 'Esta vista registra todos los controladores de la aplicación',
     'This view recollect all the views or windows that exists in this web application.
-        (for a proposal of privileges and access control)' =>
-        'Esta vista, registra todas las vistas que existen en esta aplicación
+        (for a proposal of privileges and access control)' => 'Esta vista, registra todas las vistas que existen en esta aplicación
 (para propósitos de control de accesos y privilegios)',
-    'This view shows the IP addresses that have been blocked for security or administrative reasons.' =>
-        'Esta vista muestra direcciones IP, que han sido bloqueadas por razones administrativas',
+    'This view recollect all the views that exists in this web application.' => 'Esta vista colecciona todas las vistas que existen en esta aplicación web',
+    'IP addresses that have been blocked for security or administrative reasons.' => 'Direcciones IP, que han sido bloqueadas por razones administrativas',
+    'To upload files was created the directory: {dir}' => 'Para subir archivos fue creado el directorio {dir}',
+    'Toggle value' => 'Cambiar valor',
     'URL Webpage' => 'URl página web',
+    'Unkown' => 'Desconocido',
     'Update' => 'Actualizar',
     'Update the current record' => 'Actualizar el registro activo',
     'User' => 'Usuario',
     'User account' => 'Cuenta de usuario',
+    'User identification' => 'Identificación de usuario',
     'Username' => 'Cuenta usuario',
     'Users' => 'Usuarios',
-    'We have sent an email with a link for your confirmation, please check your inbox' =>
-        'Hemos enviado un correo con un enlace de confirmación, por favor revisa tu bandeja de entrada',
-    'We have sent you an email with a reset link. Please check your Inbox' =>
-        'Hemos enviado a su correo un enlace para restablecer su contraseña,
+    'We are sorry, but the application is currently being maintained.<br>Please try again later.' => 'Nuestras disculpas, pero la aplicación en este momento está bajo mantención.<br/>
+ Por favor inténtelo más tarde.',
+    'We can not reset the password for this user' => 'No podemos resetear la contraseña para este usuario',
+    'We have sent an email with a link for your confirmation, please check your inbox' => 'Hemos enviado un mensaje un enlace de confirmación, por favor revisa tu bandeja de entrada',
+    'We have sent you an email with a reset link. Please check your Inbox' => 'Hemos enviado a su correo un enlace para restablecer su contraseña,
 por favor revise su bandeja de entrada',
     'We will be very happy to answer all your business inquiries,
                             please complete the following form to contact us.
-                            We will respond as soon as possible. Thank you very much.' =>
-        'Estaremos muy feliz de responder todas sus consultas de negocios,
+                            We will respond as soon as possible. Thank you very much.' => 'Estaremos muy feliz de responder todas sus consultas de negocios,
                             Por favor complete el sigueinte formaulario para contactarnos',
     'Web page loaded in:' => 'Página web fue cargado en: ',
-    'When entering a password, it will be updated for this user account' =>
-        'Al ingresar una contraseña, se actualizará para esta cuenta de usuario',
+    'Website in maintenance' => 'Sitio web en mantención',
+    'When entering a password, it will be updated for this user account' => 'Al ingresar una contraseña, se actualizará para esta cuenta de usuario',
     'Yes' => 'Sí',
     'You do not have an account?' => 'No tienes una cuenta?',
     'Your account don\'t have priviledges for this action,
-                    please do not repeat this requirement. All site traffic is being monitored' =>
-        'Su cuenta no tiene privilegios para esta acción,
+                    please do not repeat this requirement. All site traffic is being monitored' => 'Su cuenta no tiene privilegios para esta acción,
                     por favor no repita este requisito. Todo el tráfico del sitio está siendo monitoreado',
-    'Your new password will be saved in your user account.' =>
-        'Su nueva contraseña se guardará en su cuenta de usuario.',
+    'Your account don\'t have priviledges for this action,
+        please do not repeat this requirement. All site traffic is being monitored' => 'Su cuenta, no tiene privilegios para esta acción. Por favor no repita este requerimiento. Todo el sitio está siendo monitoreado',
+    'Your new password will be saved in your user account.' => 'Su nueva contraseña se guardará en su cuenta de usuario.',
     'called to remove items,
-                    but has not send selection of records to remove: Possible Security issue event?' =>
-        'Se ha invocado eliminar elementos, pero no ha enviado la selección de registros para eliminar:
+                    but has not send selection of records to remove: Possible Security issue event?' => 'Se ha invocado eliminar elementos, pero no ha enviado la selección de registros para eliminar:
  ¿Posible evento de problema de seguridad?',
+    'called to remove items,
+    but has not send selection of records to remove: Possible Security issue event?' => 'Se ha llamado a eliminar registros, pero no se ha indicado los registros a eliminar',
     'date' => 'Fecha',
     'date time' => 'Fecha/hora',
     'forget your password?' => 'Olvidó su contraseña?',
     'id' => 'Id',
-    'ipv4 address confirmed' => 'Dirección de IPV4 confirmada',
     'ipv4 address' => 'Dirección IPV4 ',
+    'ipv4 address confirmed' => 'Dirección de IPV4 confirmada',
+    'ipv4_address' => 'Dirección IPV34',
     'ipv4_address integer' => 'Dirección de IPV4 (formato entero)',
     'john.doe@domain.com' => 'john.doe@domain.com',
     'key auth' => 'Key auth',
+    'module: {module}, file: {file} was removed' => 'Modulo: {module}, archivo: {file} fue eliminado',
     'new record {id}' => 'Nuevo registro {id}',
     'password' => 'Contraseña',
     'password reset token' => 'Token para reiniciar contraseña',
     'password reset token date creation' => 'Fecha de creación para reiniciar contraseña',
+    'record {id} was deleted' => 'Registro {id} fue eliminado',
+    'show password' => 'Mostrar contraseña',
     'showing the view' => 'Mostrando la vista',
     'showing the view: Blocked/index' => 'Mostrando la vista Blocked/index',
     'showing the view: Controllers/index' => 'Mostrando la vista Controller/index',
     'showing the view: Logs/index' => 'Mostrando la vista Logs/index',
     'showing the view: Status/index' => 'Mostrando la vista Status/index',
-    'Unkown' => 'Desconocido',
     'user' => 'Usuario',
     'user agent browser' => 'Agente de usuario en navegador',
     'view record {id}' => 'Vista registro {id}',
-    'We can not reset the password for this user' => '',
-    'We are sorry, but the application is currently being maintained.<br>Please try again later.' =>
-        'Nuestras disculpas, pero la aplicación en este momento está bajo mantención.<br/>
- Por favor inténtelo más tarde.',
-    'Website in maintenance' => 'Sitio web en mantención',
-    'The password used at this platform was updated successfully' =>
-        'La contraseña utilizada en esta plataforma, fue actualizada con éxito.',
 ];

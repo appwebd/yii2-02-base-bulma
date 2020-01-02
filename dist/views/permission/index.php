@@ -35,7 +35,7 @@ $this->title = Yii::t('app', Permission::TITLE);
 $this->params[BREADCRUMBS][] = $this->title;
 
 echo Html::beginForm(['permission/index'], 'post');
-
+$uiButtons = new UiButtons();
 $uiComponent = new UiComponent();
 $uiComponent->cardHeader(
     'fas fa-circle fa-2x',
@@ -93,13 +93,14 @@ try {
 
                 [
                     STR_CLASS => GRID_DATACOLUMN,
-                    FILTER => UiComponent::yesOrNoArray(),
+                    FILTER => $uiComponent->yesOrNoArray(),
                     ATTRIBUTE => Permission::ACTION_PERMISSION,
                     OPTIONS => [STR_CLASS => COLSM1],
                     VALUE => function ($model) {
                         $url = "permission/toggle";
+                        $uiComponent = new UiComponent();
                         return Html::a(
-                            '<span class="' . UiComponent::yesOrNoGlyphicon(
+                            '<span class="' . $uiComponent->yesOrNoGlyphicon(
                                 $model->action_permission
                             ) . '"></span>',
                             $url,
@@ -116,7 +117,7 @@ try {
                     FORMAT => 'raw'
                 ],
                 [
-                    'buttons' => UiButtons::buttonsActionColumn(),
+                    'buttons' => $uiButtons->buttonsActionColumn(),
                     'contentOptions' => [STR_CLASS => 'GridView'],
                     HEADER => UiComponent::pageSizeDropDownList($pageSize),
                     'headerOptions' => ['style' => 'color:#337ab7'],

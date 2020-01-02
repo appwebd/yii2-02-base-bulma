@@ -1,10 +1,10 @@
 <?php
 /**
- * User View
+ * Profile
  * PHP version 7.2.0
  *
  * @category  View
- * @package   User
+ * @package   Profile
  * @author    Patricio Rojas Ortiz <patricio-rojaso@outlook.com>
  * @copyright 2019 (C) Copyright - Web Application development
  * @license   Private license
@@ -13,28 +13,29 @@
  * @date      6/18/18 10:34 AM
  */
 
-use app\components\UiButtons;
 use app\components\UiComponent;
+use app\controllers\BaseController;
 use app\models\Profile;
 use app\models\queries\Bitacora;
-use app\models\User;
 use yii\widgets\DetailView;
+use app\components\UiButtons;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\User */
+/* @var object $model app\models\Profile */
 
-$this->title = Yii::t('app', User::TITLE);
-
+$this->title = Yii::t('app', Profile::TITLE);
 $this->params[BREADCRUMBS][] = ['label' => $this->title, 'url' => ['index']];
-
-echo HTML_WEBPAGE_OPEN;
+$this->params[BREADCRUMBS][] = $model->profile_id;
 
 $uiComponent = new UiComponent();
 $uiComponent->cardHeader(
-    'user',
-    'white',
+    Profile::ICON,
+    'is-white',
     $this->title,
-    Yii::t('app', 'This view permit view detailed information of User')
+    Yii::t('app', 'This view permit view detailed information of Profiles'),
+    '0000',
+    false
+
 );
 
 try {
@@ -42,25 +43,14 @@ try {
         'model' => $model,
         OPTIONS => [STR_CLASS => DETAILVIEW_CLASS],
         'attributes' => [
-            User::USERNAME,
-            User::FIRSTNAME,
-            User::LASTNAME,
-            User::EMAIL,
-            User::TELEPHONE,
-
+            Profile::PROFILE_ID,
+            Profile::PROFILE_NAME,
             [
-                ATTRIBUTE => User::PROFILE_ID,
-                HEADER => Yii::t('app', 'Profile'),
-                VALUE => function ($model) {
-                    return Profile::getProfileName($model->profile_id);
-                },
-            ],
-            User::IPV4_ADDRESS_LAST_LOGIN,
-            [
-                ATTRIBUTE => User::ACTIVE,
+                ATTRIBUTE => Profile::ACTIVE,
+                OPTIONS => [STR_CLASS => COLSM1],
                 VALUE => function ($model) {
                     $uiComponent = new UiComponent();
-                    return $uiComponent->yesOrNo($model->active);
+                    return $uiComponent ->yesOrNo($model->active);
                 },
                 FORMAT => 'raw'
             ],
@@ -70,13 +60,21 @@ try {
     $bitacora = new Bitacora();
     $bitacora->register(
         $exception,
-        '@app\views\User\view::DetailView',
+        'app\views\profile\view',
         MSG_ERROR
     );
 }
 
-$buttons = new UiButtons();
-$strButtons= $buttons->buttonsViewBottom($model->user_id, '111');
-$uiComponent->cardFooter($strButtons);
 
-echo HTML_WEBPAGE_CLOSE;
+try {
+    $uiButtons = new UiButtons();
+    $strButtons = $uiButtons->buttonsViewBottom($model->profile_id,'111');
+    $uiComponent->cardFooter($strButtons);
+} catch (Exception $exception) {
+    $bitacora = new Bitacora();
+    $bitacora->register(
+        $exception,
+        'app\views\profile\view::cardfooter',
+        MSG_ERROR
+    );
+}

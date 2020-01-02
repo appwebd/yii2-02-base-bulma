@@ -14,9 +14,11 @@
 use app\components\UiButtons;
 use app\models\Profile;
 use yii\bootstrap\ActiveForm;
+use app\components\UiComponent;
 
 /* @var $model app\models\User */
 /* @var $form yii\widgets\ActiveForm */
+$uiComponent = new UiComponent();
 
 $form = ActiveForm::begin(
     [
@@ -35,6 +37,7 @@ echo $form->field($model, 'firstName')->textInput(
         AUTOFOCUS => AUTOFOCUS,
         MAXLENGTH => true,
         PLACEHOLDER => 'First name for example John',
+        STR_CLASS => INPUT,
         TABINDEX => 2,
     ]
 )->label();
@@ -43,8 +46,10 @@ echo HTML_DIV_CLOSE_DIV6_OPEN;
 
 echo $form->field($model, 'lastName')->textInput(
     [
-        MAXLENGTH => true,
+
         AUTOFOCUS => AUTOFOCUS,
+        MAXLENGTH => true,
+        STR_CLASS => INPUT,
         TABINDEX => 3,
         PLACEHOLDER => 'Last name for example Doe'
     ]
@@ -54,11 +59,13 @@ echo HTML_DIV_CLOSEX2, HTML_ROW_DIV6;
 
 echo $form->field($model, 'telephone')->textInput(
     [
-        TYPE => 'tel',
-        PATTERN => PATTERN_PHONE,
         AUTOFOCUS => AUTOFOCUS,
+        PATTERN => PATTERN_PHONE,
+        PLACEHOLDER => 'Phone number ex. 56 9 12345678',
+        STR_CLASS => INPUT,
+        TYPE => 'tel',
         TABINDEX => 4,
-        PLACEHOLDER => 'Phone number ex. 56 9 12345678'
+
     ]
 )->label()->hint('Format phone:' . PATTERN_PHONE);
 
@@ -68,8 +75,10 @@ echo $form->field($model, 'email')->input(
     'email',
     [
         AUTOFOCUS => AUTOFOCUS,
+        PLACEHOLDER => Yii::t('app', 'john.doe@domain.com'),
+        STR_CLASS => INPUT,
         TABINDEX => 5,
-        PLACEHOLDER => Yii::t('app', 'john.doe@domain.com')
+
     ]
 )->label();
 
@@ -80,19 +89,20 @@ echo '<br/><strong class="formTitle">User and profile account Properties</strong
 echo HTML_ROW_DIV6;
 echo $form->field($model, 'username')->textInput(
     [
-        MAXLENGTH => true,
         AUTOFOCUS => AUTOFOCUS,
+        MAXLENGTH => true,
+        PLACEHOLDER => 'User account',
+        STR_CLASS => INPUT,
         TABINDEX => 6,
-        PLACEHOLDER => 'User account'
-
     ]
 )->label();
 
 echo HTML_DIV_CLOSE_DIV6_OPEN;
 echo $form->field($model, 'password')->passwordInput(
     [
-        MAXLENGTH => true,
         AUTOFOCUS => AUTOFOCUS,
+        MAXLENGTH => true,
+        STR_CLASS => INPUT,
         TABINDEX => 7
     ]
 )->label()
@@ -104,8 +114,8 @@ $items = Profile::getProfileList();
 echo $form->field($model, 'profile_id')->radioList(
     $items,
     [
-        'prompt' => Yii::t('app', 'Select Profile'),
         AUTOFOCUS => AUTOFOCUS,
+        'prompt' => Yii::t('app', 'Select Profile'),
         TABINDEX => 8,
     ]
 );
@@ -114,17 +124,19 @@ echo HTML_DIV_CLOSE_DIV6_OPEN;
 echo '<br>';
 echo $form->field($model, 'active')->checkbox(
     [
-        UNCHECK => 0,
-        LABEL => '&nbsp; Active?',
         AUTOFOCUS => AUTOFOCUS,
+        LABEL => '&nbsp; Active?',
         TABINDEX => 9,
+        UNCHECK => 0,
     ]
 );
 
-echo HTML_DIV_CLOSEX2, '<br/>';
+echo HTML_DIV_CLOSEX2;
+echo HTML_DIV_CLOSE;
 echo '<div class=\'form-group\'>';
 $buttons = new UiButtons();
-$buttons->buttonsCreate(10);
+$strButtons = $buttons->buttonsCreate(10);
+$uiComponent->cardFooter($strButtons );
 echo $form->errorSummary($model, array(STR_CLASS => "error-summary"));
 echo '</div>';
 ActiveForm::end();

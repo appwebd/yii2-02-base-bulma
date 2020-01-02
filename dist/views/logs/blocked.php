@@ -1,6 +1,6 @@
 <?php
 /**
- * Blocked IP Address
+ * Blocked
  * PHP version 7.2.0
  *
  * @category  View
@@ -28,12 +28,12 @@ $this->params[BREADCRUMBS][] = $this->title;
 
 $uiComponent = new UiComponent();
 $uiComponent->cardHeader(
-    'remove-circle',
+    Blocked::ICON,
     'is-white',
     $this->title,
     Yii::t(
         'app',
-        'This view shows the IP addresses that have been blocked for security or administrative reasons.'
+        'IP addresses that have been blocked for security or administrative reasons.'
     ),
     '000',
     true
@@ -44,18 +44,16 @@ try {
         [
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'layout' => '{items}{summary}{pager}',
+            'layout' => GRIDVIEW_LAYOUT,
             'filterSelector' => 'select[name="per-page"]',
             'tableOptions' => [STR_CLASS => GRIDVIEW_CSS],
             'columns' => [
                 [
-                    STR_CLASS => 'yii\grid\CheckboxColumn',
-                    'options' => [
-                        STR_CLASS => 'width10px'
-                    ]
+                    STR_CLASS => GRID_CHECKBOXCOLUMN,
+                    OPTIONS => [STR_CLASS => 'width10px']
                 ],
                 [
-                    STR_CLASS => yii\grid\DataColumn::className(),
+                    STR_CLASS => GRID_DATACOLUMN,
                     ATTRIBUTE => Blocked::ID,
                     OPTIONS => [STR_CLASS => 'col-sm-1'],
                     FORMAT => 'raw'
@@ -72,11 +70,11 @@ try {
             ]
         ]
     );
-} catch (Exception $exception) {
+} catch (Exception $errorException) {
     $bitacora = new Bitacora();
     $bitacora->register(
         $exception,
-        'views\logs\blocked::Gridview',
+        'app\views\logs\blocked::Gridview',
         MSG_ERROR
     );
 }

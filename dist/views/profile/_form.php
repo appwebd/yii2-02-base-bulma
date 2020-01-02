@@ -14,14 +14,38 @@
 */
 
 use app\models\Profile;
+use app\components\UiComponent;
+use app\components\UiButtons;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Profile */
-/* @var $form yii\widgets\ActiveForm */
+
+$uiComponent = new UiComponent();
+$uiComponent->cardHeader(
+    Profile::ICON,
+    'is-white',
+    $this->title,
+    Yii::t(
+        'app',
+        'Please complete all requested information.'
+    ),
+    '000',
+    false
+);
+
 
 if ($model->isNewRecord) {
     $model->active = 1;
 }
+
+$form = ActiveForm::begin(
+    [
+        'id' => 'form-profile',
+        'method' => 'post',
+        'options' => ['class' => 'form-vertical '],
+    ]
+);
 
 echo $form->field($model, Profile::PROFILE_ID)->hiddenInput(
     [
@@ -58,9 +82,7 @@ echo $form->field(
         AUTOFOCUS => AUTOFOCUS,
         AUTOCOMPLETE => 'off',
         PLACEHOLDER => 'Active',
-        REQUIRED => REQUIRED,
         TABINDEX => '2',
-
         UNCHECK=>0,
     ]
 )->label();
@@ -68,5 +90,14 @@ echo $form->field(
 echo '<br>
     <div class=\'form-group\'>',
       $form->errorSummary($model, array(STR_CLASS => "error-summary"));
+
+echo HTML_DIV_CLOSE;
+
+$uiButtons = new UiButtons();
+$buttons = $uiButtons->buttonsCreate(3);
+$uiComponent->cardFooter($buttons);
+
+
+ActiveForm::end();
 
 echo HTML_DIV_CLOSE;
