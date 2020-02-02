@@ -484,14 +484,8 @@ class UiButtons extends Component
             Yii::t('app', 'Refresh')
         );
 
-        $strFooter = $buttonSave.self::HTML_SPACE.
-            '<button type=\'reset\' class=\''.self::CSS_BTN_DEFAULT.'\' '.
-            self::HTML_TITLE.'=\''
-            .Yii::t('app', 'Refresh').'\' '.
-            self::HTML_DATA_TOGGLE.'=\''.self::HTML_TOOLTIP.'\' '.
-            self::HTML_DATA_PLACEMENT.'=\''.self::HTML_DATA_PLACEMENT_VALUE.
-            '\'>'.$caption.'</button>'.
-            self::HTML_SPACE;
+        $strFooter = $buttonSave
+            . self::HTML_SPACE;
 
         if ($showBackToIndex) {
             $caption = $this->buttonCaption(
