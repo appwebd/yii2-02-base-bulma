@@ -160,6 +160,28 @@ HTML;
     }
 
     /**
+     * Panel with header title
+     * @param string $title Title of panel.
+     *
+     * @return string
+     */
+    public function panelHeader($title)
+    {
+            return '<nav class="panel">
+                    <p class="panel-heading">'. $title .'
+                    </p>';
+    }
+
+    /**
+     * Close the panel
+     * @return string
+     */
+    public function panelClose()
+    {
+        return '</div>
+                    </nav>';
+    }
+    /**
      * Show pageSize Dropdown in view
      *
      * @param int $pageSize numbers of rows to show per page in gridView.
