@@ -19,7 +19,7 @@ class ActiveFieldForm extends ActiveField
         $helpText = ArrayHelper::getValue($this->options, ICON_HELP ,'');
         $hasIconLeft  = ' ';
         $hasIconRight = ' ';
-        $help =  '';
+
         if (isset($iconLeft[3])) { // String is greather than 3 chars
             $hasIconLeft = ' has-icons-left ';
             $iconLeft = '<span class="icon is-small is-left">'
@@ -35,7 +35,7 @@ class ActiveFieldForm extends ActiveField
 
         if (isset($helpText[2])) {
 
-            $help = '<a class = "  has-tooltip-multiline is-static tooltip is-tooltip-multiline" 
+            $help = '<a class = "  has-tooltip-multiline is-static tooltip is-tooltip-multiline"
                     data-tooltip = "'.$helpText.'">
                         <i class = "fas fa-question-circle"></i>
                     </a>';
@@ -50,27 +50,25 @@ class ActiveFieldForm extends ActiveField
                             <div class = "control help-tooltip">
                                 ' . $help . '
                             </div>
-                        </div>                               
+                        </div>
                         {hint}
                         {error}
-                        <br>                                                      
+                        <br>
                     </div>';
         } else {
             $this->template = '
-                    <div class="field ">                    
-                        {label}                                            
+                    <div class="field ">
+                        {label}
                         <div class="control '.$hasIconLeft .' ' .$hasIconRight .'">
                         {input}
-                            '.$iconLeft.' '. $iconRight.'                            
+                            '.$iconLeft.' '. $iconRight.'
                         </div>
-                        {hint}                        
+                        {hint}
                         {error}
-                        <br>                            
+                        <br>
                     </div>
                     ';
         }
-//TODO AUMENTAR MARGIN-BOTTOM DE FIELD
-
         parent::init();
     }
 }
