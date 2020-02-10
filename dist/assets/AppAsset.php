@@ -20,7 +20,7 @@ use yii\web\View;
 /**
  * Class AppAsset
  * PHP Version 7.4
- * 
+ *
  * @category  Assets
  * @package   Assets
  * @author    Patricio Rojas Ortiz <patricio-rojaso@outlook.com>
@@ -43,10 +43,10 @@ class AppAsset extends AssetBundle
         ['/js/javascript-distr.min.js', 'async' => true],
     ];
 
-    // Habilitar yii\web\YiiAsset paraque cargue jquery empleado en los alert y
-    // extensiones
+    // Enable yii\web\YiiAsset to load jquery
+    // used in alerts and extensions
+
     public $depends = [
         'yii\web\YiiAsset',
     ];
-
 }
