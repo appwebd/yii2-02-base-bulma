@@ -45,13 +45,13 @@ class BulmaMenu extends Component
     public function navBarBegin($classNavbar = ' is-primary ')
     {
 
-        echo '<nav class="navbar is-fixed-top  ' .$classNavbar.'"
+        echo '<nav class="navbar is-fixed-top  ', $classNavbar, '"
                    role="navigation"
                    aria-label="main navigation"
             >
             <div class="navbar-brand">
-                <a class="navbar-item" href="'.Url::home('https').'">
-                    <img src="'.Url::base().'/images/logo.png"
+                <a class="navbar-item" href="', Url::home('https'), '">
+                    <img src="', Url::base(), '/images/logo.png"
                             alt="Logo"
                             class="logo">
                 </a>
@@ -112,7 +112,7 @@ class BulmaMenu extends Component
     }
     /**
      * Echo a segment or block of Bulma menu
-     *
+     * @param string $class Cascade Style Sheet class
      * @return void
      */
     final public function navBarBlockOpen($class = 'navbar-start has-text-left')
@@ -134,7 +134,7 @@ class BulmaMenu extends Component
         $captionIcon = '<i class="fas '.$icon.'"></i> &nbsp; <span>'
                         . $caption .'</span>';
 
-        echo Html::a(
+        return Html::a(
             $captionIcon,
             Url::to([$action]),
             [STR_CLASS => "navbar-item $class"]
@@ -188,7 +188,7 @@ class BulmaMenu extends Component
                 ).Html::endForm()
             );
 
-        echo  '<div class="navbar-end  has-text-right">
+        return  '<div class="navbar-end  has-text-right">
                     <div class="navbar-item">'
                     . $label .'&nbsp;
                     </div>
