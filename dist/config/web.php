@@ -27,7 +27,7 @@ $config = [
         'log',
         [
             'class' => 'app\components\LanguageSelector',
-            'supportedLanguages' => ['en', 'es'],
+            'supportedLang' => ['en', 'es'],
         ],
     ],
 
@@ -155,9 +155,10 @@ $config = [
         ],
         'session' => [
             'class' => 'yii\web\DbSession',
+            'sessionTable' => 'session',
             //'name' => 'MYAPPSID',
             //'savePath' => '@app/tmp/sessions',
-            'timeout' => 1440, //24 minutos?
+            'timeout' => 1440, //24 minutes?
             'cookieParams' => [
                 'httpOnly' => true,
                 'secure' => true

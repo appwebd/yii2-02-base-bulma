@@ -2025,20 +2025,26 @@ a[data-value=""] {
 */
 
 .footer {
-    background: transparent !important;
+    background: transparent !important;    
+    bottom: 0;
     color: #999999;
-
+    left: 0;    
     padding: 0;
-    margin: 0;
+    position: fixed;
     width: 100%;
 }
 
+.subfooter{
+    background-color: #f4f7f8;
+    padding:20px;
+}
 /*
 .footer a {
   color: #999999;
   text-transform: capitalize;
 }
 */
+
 .copyright {
     color: #999999;
     padding: 0 0 0 7px;

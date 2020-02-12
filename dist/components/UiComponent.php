@@ -217,7 +217,7 @@ HTML;
                 )
             ).'</div>';
     }
-
+    
     /**
      * Close a card style function
      *

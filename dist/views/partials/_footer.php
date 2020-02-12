@@ -7,10 +7,9 @@ use yii\helpers\Url;
 
 <footer class="footer">
 
-    <div class=" block has-text-right is-size-7">
-        <br>
+    <div class=" block has-text-right is-size-7 subfooter">
 
-        &nbsp
+        &nbsp;
         <?= Html::a(Yii::t('app', 'ABOUT'), Url::to('site/about')); ?>
 
         &nbsp;&nbsp;
