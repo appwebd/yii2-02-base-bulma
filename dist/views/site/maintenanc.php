@@ -1,5 +1,22 @@
 <?php
 
+/**
+ * Class ${NAME}
+ * PHP version 7.1.0
+ *
+ * @category
+ * @author    Patricio Rojas Ortiz <patricio-rojaso@outlook.com>
+ * @copyright 2019 (C) Copyright - Web Application development
+ * @license   Private license
+ * @version   GIT: <git_id>
+ * @link      https://appwebd.github.io
+ * @date      2019-09-09
+ */
+
+
+/* @var $this \yii\web\View */
+
+
 use yii\helpers\Html;
 
 /* @var yii\web\View $this */
@@ -26,4 +43,3 @@ $this->params[BREADCRUMBS][] = $this->title;
         </div>
     </div>
 </div>
-

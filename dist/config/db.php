@@ -1,4 +1,17 @@
 <?php
+/**
+ * Allows you to configure the database connection in the application
+ * PHP Version 7.0.0
+ *
+ * @category  Config
+ * @package   Db
+ * @author    Patricio Rojas Ortiz <patricio-rojaso@outlook.com>
+ * @copyright 2019  Copyright - Web Application development
+ * @license   BSD 3-clause Clear license
+ * @version   GIT: <git_id>
+ * @link      https://appwebd.github.io
+ * @date      11/1/18 10:07 PM
+ */
 
 if (YII_DEBUG) {
     $enableSchemaCache = false;

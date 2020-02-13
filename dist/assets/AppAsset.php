@@ -7,7 +7,7 @@
  * @package   Assets
  * @author    Patricio Rojas Ortiz <patricio-rojaso@outlook.com>
  * @copyright 2019 (C) Copyright - Web Application development
- * @license   https://appwebd.github.ui/License.html GNU
+ * @license   https://appwebd.github.io/License.html GNU
  * @version   GIT: <git_id>
  * @link      https://appwebd.github.io
  * @date      11/17/18 5:05 PM
@@ -33,7 +33,7 @@ use yii\web\View;
 class AppAsset extends AssetBundle
 {
     public $basePath  = '@webroot';
-    public $jsOptions = ['position' => View::POS_HEAD];
+    public $jsOptions = ['position' => View::POS_END];
 
     public $css = [
         ['/css/style.min.css',],

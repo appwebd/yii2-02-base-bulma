@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 31, 2019 at 06:24 PM
+-- Generation Time: Feb 12, 2020 at 02:56 PM
 -- Server version: 5.7.26
--- PHP Version: 7.3.13-1+0~20191218.50+debian9~1.gbp23c2da
+-- PHP Version: 7.3.14-5+0~20200202.52+debian9~1.gbpa71879
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_base`
@@ -37,16 +37,6 @@ CREATE TABLE `action` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'date created',
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'date updated'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Actions';
-
---
--- Dumping data for table `action`
---
-
-INSERT INTO `action` (`action_id`, `controller_id`, `action_name`, `action_description`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'index', 'not verified', 1, '2019-12-05 10:37:08', '2019-12-05 10:37:08'),
-(2, 2, 'index', 'not verified', 1, '2019-12-05 10:43:21', '2019-12-05 10:43:21'),
-(3, 3, 'index', 'not verified', 1, '2019-12-05 11:19:12', '2019-12-05 11:19:12'),
-(4, 1, 'error', 'not verified', 1, '2019-12-05 11:25:25', '2019-12-05 11:25:25');
 
 -- --------------------------------------------------------
 
@@ -81,7 +71,7 @@ CREATE TABLE `company` (
   `contact_email` char(254) DEFAULT NULL COMMENT 'Contact email',
   `webpage` char(254) DEFAULT NULL COMMENT 'URL Webpage',
   `created_at` datetime NOT NULL COMMENT 'Created at',
-  `updated_at` datetime NOT NULL COMMENT 'Updated at',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Updated at',
   `active` tinyint(1) NOT NULL COMMENT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Company';
 
@@ -102,15 +92,6 @@ CREATE TABLE `controllers` (
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'date updated'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Controllers';
 
---
--- Dumping data for table `controllers`
---
-
-INSERT INTO `controllers` (`controller_id`, `controller_name`, `controller_description`, `menu_boolean_private`, `menu_boolean_visible`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'site', 'not verified', 1, 0, 1, '2019-12-05 10:37:08', '2019-12-05 10:37:08'),
-(2, 'logs', 'not verified', 1, 0, 1, '2019-12-05 10:43:21', '2019-12-05 10:43:21'),
-(3, 'user', 'not verified', 1, 0, 1, '2019-12-05 11:19:12', '2019-12-05 11:19:12');
-
 -- --------------------------------------------------------
 
 --
@@ -123,7 +104,7 @@ CREATE TABLE `logs` (
   `status_id` int(11) NOT NULL COMMENT 'Status',
   `controller_id` int(11) NOT NULL COMMENT 'Controller',
   `action_id` int(11) NOT NULL COMMENT 'Action',
-  `functionCode` char(60) COLLATE utf8_bin DEFAULT NULL,
+  `functionCode` char(60) COLLATE utf8_bin DEFAULT NULL COMMENT 'Function code',
   `event` char(250) CHARACTER SET utf8 NOT NULL COMMENT 'Activity / Event',
   `user_agent` char(250) CHARACTER SET utf8 NOT NULL COMMENT 'user agent browser',
   `ipv4_address` char(20) CHARACTER SET utf8 NOT NULL COMMENT 'ipv4_address',
@@ -132,6 +113,21 @@ CREATE TABLE `logs` (
   `user_id` int(11) NOT NULL COMMENT 'User'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Logs (user bitacora)';
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parameter`
+--
+
+CREATE TABLE `parameter` (
+  `parameter_id` int(11) NOT NULL COMMENT 'Parameter',
+  `key` char(60) NOT NULL COMMENT 'Key',
+  `value` char(40) NOT NULL COMMENT 'Value',
+  `description` char(80) NOT NULL COMMENT 'Description',
+  `active` tinyint(1) NOT NULL COMMENT 'Active',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created at',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Updated at'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Parameters';
 
 -- --------------------------------------------------------
 
@@ -168,7 +164,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `profile_name`, `created_at`, `updated_at`, `active`) VALUES
-(10, 'Invited.', '2018-07-17 00:00:00', '2019-06-29 16:29:44', 1),
+(10, 'Invited', '2018-07-17 00:00:00', '2020-02-12 15:55:43', 1),
 (20, 'user', '2018-07-17 00:00:00', '2019-03-13 16:50:10', 1),
 (99, 'Administrator', '2018-07-18 00:00:00', '2018-07-18 00:00:00', 1);
 
@@ -183,6 +179,8 @@ CREATE TABLE `session` (
   `expire` int(11) DEFAULT NULL COMMENT 'date time expire session',
   `data` blob COMMENT 'data token'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Sessions of this web application';
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `status`
@@ -238,7 +236,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `password_reset_token_date`, `email_confirmation_token`, `firstName`, `lastName`, `email`, `email_is_verified`, `telephone`, `profile_id`, `created_at`, `updated_at`, `active`, `ipv4_address_last_login`) VALUES
-(20, 'admin', 'eHCuQ7yHQ13Xsxwy9djir0k5FCbuYKcc', '$2y$13$jL2vB0tP3RGc1r483ETKaea3IZfEbcME.pM8A.xFuAgOp2A3e9X3a', '', '2018-07-17 23:18:18', '5hpbjIKd5FARfDsIsiVI31Vi9huaad7H_1538056684', 'Administrador', 'administrador', 'pro0@dev-master.local', 1, '', 99, '2018-07-17 23:18:18', '2018-10-30 19:35:53', 1, '127');
+(20, 'admin', 'eHCuQ7yHQ13Xsxwy9djir0k5FCbuYKcc', '$2y$13$jL2vB0tP3RGc1r483ETKaea3IZfEbcME.pM8A.xFuAgOp2A3e9X3a', '', '2018-07-17 23:18:18', '5hpbjIKd5FARfDsIsiVI31Vi9huaad7H_1538056684', 'Administrador', 'administrador', 'pro0@dev-master.local', 1, '', 99, '2018-07-17 23:18:18', '2020-01-02 19:22:07', 1, '127');
 
 --
 -- Indexes for dumped tables
@@ -277,6 +275,13 @@ ALTER TABLE `logs`
   ADD KEY `fk_logs_controllers1_idx` (`controller_id`),
   ADD KEY `fk_logs_status1_idx` (`status_id`),
   ADD KEY `fk_logs_action1_idx` (`action_id`);
+
+--
+-- Indexes for table `parameter`
+--
+ALTER TABLE `parameter`
+  ADD PRIMARY KEY (`parameter_id`),
+  ADD KEY `idx_key` (`key`);
 
 --
 -- Indexes for table `permission`
@@ -320,7 +325,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `action`
 --
 ALTER TABLE `action`
-  MODIFY `action_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Actions', AUTO_INCREMENT=5;
+  MODIFY `action_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Actions';
 
 --
 -- AUTO_INCREMENT for table `blocked`
@@ -338,13 +343,19 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `controllers`
 --
 ALTER TABLE `controllers`
-  MODIFY `controller_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Controller', AUTO_INCREMENT=4;
+  MODIFY `controller_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Controller', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Logs', AUTO_INCREMENT=57;
+  MODIFY `logs_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Logs';
+
+--
+-- AUTO_INCREMENT for table `parameter`
+--
+ALTER TABLE `parameter`
+  MODIFY `parameter_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Parameter';
 
 --
 -- AUTO_INCREMENT for table `permission`
@@ -368,7 +379,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'User', AUTO_INCREMENT=40;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'User', AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

@@ -1,0 +1,12 @@
+718d829 Tue Feb 11 21:40:31 2020 -0300 fixed some issues.
+0aec6c0 Mon Feb 10 10:22:52 2020 -0300 correction of return type of some functions in this class
+9e66665 Mon Feb 10 10:22:00 2020 -0300 Translation of comment
+01a7c17 Mon Feb 10 10:21:12 2020 -0300 Was removed unused var
+66223a0 Sat Feb 1 21:02:54 2020 -0300 Was removed this class.
+b6d40a6 Sat Feb 1 21:02:39 2020 -0300 Was added fuinction panelHeader feature of Bulma Framework UI
+61b804c Sat Feb 1 21:02:00 2020 -0300 Was added token identification
+7e8329d Sat Feb 1 21:01:34 2020 -0300 Was removed refresh button in forms.
+d1c6a11 Thu Jan 2 19:40:41 2020 -0300 Error correction;Deletion of unnecessary files(concentrated in the log view).
+a3e0bd2 Tue Dec 31 20:26:33 2019 -0300 Update README.md
+8cc0dab Tue Dec 31 19:54:38 2019 -0300 Initial commit
+381a45c Tue Dec 31 19:23:18 2019 -0300 Initial commit

@@ -258,7 +258,7 @@ class UserController extends BaseController
         }
 
         $nroSelections = sizeof($result);
-        $status = [];
+        $status = ['','','',''];
         // 0: OK was deleted,      1: KO Error deleting record,
         // 2: Used in the system,  3: Not found record in the system
 

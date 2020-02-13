@@ -85,7 +85,10 @@ $config = [
                         'app' => 'app.php',
                         'app/error' => 'error.php',
                     ],
-                    'on missingTranslation' => ['app\components\TranslationEvent', 'missingTrans']
+                    'on missingTranslation' =>
+                    [
+                        'app\components\TranslationEvent', 'MissingTrans'
+                    ]
                 ],
             ],
         ],
@@ -98,7 +101,7 @@ $config = [
                     'levels' => ['error', 'warning', 'info'],
                     'logFile' => '@runtime/logs/app.log',
                     'except' => [
-                      'yii\web\HttpException:404',
+                        'yii\web\HttpException:404',
                     ],
                 ],
                 /*
@@ -110,7 +113,7 @@ $config = [
                         'yii\db\*',
                     ],
                     'except' => [
-                      'yii\web\HttpException:404',
+                        'yii\web\HttpException:404',
                     ],
                 ],
                 'email' => [
@@ -118,7 +121,10 @@ $config = [
                     'except' => ['yii\web\HttpException:404'],
                     'levels' => ['error', 'warning'],
                     //'categories' => ['yii\db\*'],
-                    'message' => ['from' => 'pro@localhost', 'to' => 'pro@localhost'],
+                    'message' => [
+                        'from' => 'pro@localhost',
+                        'to' => 'pro@localhost'
+                    ],
                     'subject' => 'Database errors at example.com',
                 ],*/
             ],
@@ -129,23 +135,29 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'localhost',
-                'username' => 'root@dev-master.local',
+                'username' => 'pro@dev-master.local',
                 'password' => 'password', // your password
                 'port' => '25',
 //                'encryption' => 'tls',
             ],
         ],
+// Enable the following instruction
+// only if you have a web page server with SSL certificate
+/*
         'cookies' => [
             'class' => 'yii\web\Cookie',
             'httpOnly' => true,
             'secure' => true
         ],
+*/
         'request' => [
             // !!! insert a secret key in the following
             // (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'BCF5F4707D8FE67F7FDB8CB153D05E12907F6F82',
             'enableCsrfValidation' => true,
             'enableCookieValidation' => true,
+// Enable the following instruction
+// only if you have a web page server with SSL certificate
 /*
             'csrfCookie' => [
                 'httpOnly' => true,
@@ -159,15 +171,21 @@ $config = [
             //'name' => 'MYAPPSID',
             //'savePath' => '@app/tmp/sessions',
             'timeout' => 1440, //24 minutes?
+// Enable the following instruction
+// only if you have a web page server with SSL certificate
+/*
             'cookieParams' => [
                 'httpOnly' => true,
                 'secure' => true
             ]
+*/
         ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['/login/index'],
+// Enable the following instruction
+// only if you have a web page server with SSL certificate
 /*
             'identityCookie' => [
                 'name' => '_identity',
@@ -197,7 +215,7 @@ $config = [
     ],
 
     'defaultRoute' => 'site/index',
-    'id' => 'basic',
+    'id' => 'base',
     'language' => 'en',
     'layoutPath' => '@app/views/layouts',
     'name' => 'Base',
@@ -223,8 +241,6 @@ if (YII_ENV_DEV) {
         // if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
-
-    $config['components']['assetManager']['forceCopy'] = true;
 }
 
 return $config;

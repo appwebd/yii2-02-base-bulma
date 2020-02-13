@@ -199,14 +199,28 @@ class DeleteRecord extends Component
         }
 
         if ($okTransaction == 0) {
+            $transaction = Yii::$app->db->beginTransaction();
             try {
-                $common = new Common();
-                $okTransaction = $common->transaction(
-                    $model,
-                    ACTION_DELETE
+                $id = $model->getId();
+                $bitacora = new Bitacora();
+                if ($model->delete()) {
+                    $transaction->commit();
+                    $okTransaction = 1;
+                    $status = MSG_SUCCESS;
+                    $msg =  'OK removed record:' . $id;
+                } else {
+                    $transaction->rollBack();
+                    $okTransaction = 0;
+                    $status = MSG_ERROR;
+                    $msg = 'Error removing record: '. $id;
+                }
+                $bitacora->register(
+                    $msg,
+                    'app\components\DeleteRecord::remove',
+                    $status
                 );
-                $okTransaction= ($okTransaction)?1:0;
             } catch (Exception $exception) {
+                $transaction->rollBack();
                 $okTransaction = 0;
                 $bitacora = new Bitacora();
                 $bitacora->register(
@@ -268,39 +282,34 @@ class DeleteRecord extends Component
      */
     public function summaryDisplay($status)
     {
-        if (isset($status[0])) {
+
+
+        if (isset($status[0]) && strlen($status[0])>0) {
             $ids = $status[0];
-            if (strlen($ids)>0) {
-                $msg = 'Selected records:
+            $msg = 'Selected records:
             \'{ids}\' a problem occurred removing the record';
-                $this->summaryItem($msg, $ids, MSG_ERROR);
-            }
+            $this->summaryItem($msg, $ids, MSG_ERROR);
         }
 
-        if (isset($status[1])) {
+        if (isset($status[1]) && strlen($status[1])>0) {
             $ids = $status[1];
-            if (strlen($ids)>0) {
-                $msg = 'Records selected: \'{ids}\' has been deleted.';
-                $this->summaryItem($msg, $ids, MSG_SUCCESS);
-            }
+            $msg = 'Records selected: \'{ids}\' has been deleted.';
+            $this->summaryItem($msg, $ids, MSG_SUCCESS);
+
         }
 
-        if (isset($status[2])) {
+        if (isset($status[2]) && strlen($status[2])>0) {
             $ids = $status[2];
-            if (strlen($ids)>0) {
-                $msg = 'Selected records:
-                \'{ids}\' have not been deleted,
-                they are being used in the system';
-                $this->summaryItem($msg, $ids, MSG_ERROR);
-            }
+            $msg = 'Selected records:
+            \'{ids}\' have not been deleted,
+            they are being used in the system';
+            $this->summaryItem($msg, $ids, MSG_ERROR);
         }
 
-        if (isset($status[3])) {
+        if (isset($status[3])  && strlen($status[3])>0) {
             $ids = $status[3];
-            if (strlen($ids)>0) {
-                $msg = 'Selected records: \'{ids}\' was not found in the database';
-                $this->summaryItem($msg, $ids, MSG_ERROR);
-            }
+            $msg = 'Selected records: \'{ids}\' was not found in the database';
+            $this->summaryItem($msg, $ids, MSG_ERROR);
         }
     }
 

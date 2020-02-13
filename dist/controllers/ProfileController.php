@@ -24,8 +24,6 @@ use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 /**
  * Class ProfileController
@@ -79,47 +77,7 @@ class ProfileController extends BaseController
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                STR_CLASS => AccessControl::class,
-                'only' => [
-                    ACTION_CREATE,
-                    ACTION_DELETE,
-                    ACTION_INDEX,
-                    self::ACTION_TOGGLE_ACTIVE,
-                    ACTION_REMOVE,
-                    ACTION_UPDATE,
-                    ACTION_VIEW
-                ],
-                'rules' => [
-                    [
-                        ACTIONS => [
-                            ACTION_CREATE,
-                            ACTION_DELETE,
-                            ACTION_INDEX,
-                            self::ACTION_TOGGLE_ACTIVE,
-                            ACTION_REMOVE,
-                            ACTION_UPDATE,
-                            ACTION_VIEW
-                        ],
-                        ALLOW => true,
-                        ROLES => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                STR_CLASS => VerbFilter::class,
-                ACTIONS => [
-                    ACTION_CREATE => ['get',  'post'],
-                    ACTION_DELETE => ['post'],
-                    ACTION_INDEX => ['get', 'post'],
-                    self::ACTION_TOGGLE_ACTIVE => ['post'],
-                    ACTION_REMOVE => ['post'],
-                    ACTION_UPDATE => ['get',  'post'],
-                    ACTION_VIEW => ['get'],
-                ],
-            ],
-        ];
+        return $this->behaviorsCommon();
     }
 
     /**
@@ -200,7 +158,7 @@ class ProfileController extends BaseController
             $status = $common->transaction($model, ACTION_DELETE);
             $deleteRecord->report($status);
         } catch (Exception $exception) {
-            $bitacora =new Bitacora();
+            $bitacora = new Bitacora();
             $bitacora->registerAndFlash($exception, 'actionDelete', MSG_ERROR);
         }
 
@@ -306,9 +264,9 @@ class ProfileController extends BaseController
         }
 
         $nroSelections = sizeof($result);
-        $status = [];
-        // 0: OK was deleted,      1: KO Error deleting record,
-        // 2: Used in the system,  3: Not found record in the system
+        $status = ['','','',''];
+        // 0: KO Error deleting record,  1:OK was deleted,
+        // 2: Used in the system,        3: Not found record in the system
 
         for ($counter = 0; $counter < $nroSelections; $counter++) {
             try {

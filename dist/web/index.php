@@ -20,4 +20,10 @@ require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
 
 $config = require __DIR__ . '/../config/web.php';
 
-(new yii\web\Application($config))->run();
+try {
+    (new yii\web\Application($config))->run();
+} catch (\yii\db\Exception $exception) {
+    $message = 'The connection to the database could not be made.: '
+        . $exception->getMessage();
+    echo Yii::$app->view->render('@app/views/site/error', ['message' => $message]);
+}
